@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sentence Length Checker</title>
+</head>
+<body>
+	<h1>Sentence Length Checker</h1>
+	<p>
+		<label for="input">Enter your paragraph:</label><br>
+		<textarea id="input" rows="10" cols="50"></textarea><br><br>
+		<button onclick="checkLength()">Check Sentence Length</button><br><br>
+		<label for="output">Long sentences:</label><br>
+		<textarea id="output" rows="10" cols="50" readonly></textarea>
+	</p>
+
+	<script>
+		function checkLength() {
+			// Get the input paragraph
+			var input = document.getElementById("input").value;
+
+			// Split the paragraph into sentences
+			var sentences = input.split(/[.!?]/);
+
+			// Check the length of each sentence
+			var longSentences = [];
+			for (var i = 0; i < sentences.length; i++) {
+				if (sentences[i].split(" ").length > 41) {
+					longSentences.push(sentences[i]);
+				}
+			}
+
+			// Display the long sentences
+			document.getElementById("output").value = longSentences.join("\n\n");
+		}
+	</script>
+</body>
+</html>
